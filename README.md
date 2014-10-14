@@ -1,0 +1,1 @@
+## Simple Scraper for HealthMap's Geo Data
