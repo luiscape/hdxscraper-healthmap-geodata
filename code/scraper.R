@@ -13,7 +13,7 @@ onSw <- function(there = FALSE) {
 }
 
 # Helper function to write tables on ScraperWiki.
-source(paste(onSw(F), 'code/write_tables.R', sep=""))
+source(paste(onSw(T), 'code/write_tables.R', sep=""))
 
 
 ###################################################
@@ -43,8 +43,8 @@ scrapeHealthMap <- function() {
     source_url = xpathSApply(doc, '//item/source', xmlGetAttr, 'url'),
     author = xpathSApply(doc, '//item/author', xmlValue),
     country = xpathSApply(doc, '//item/category[@domain="location"]', xmlValue),
-    latitude = xpathSApply(doc, '//item/geo:lat', xmlValue),
-    longitude = xpathSApply(doc, '//item/geo:long', xmlValue),
+    latitude = as.numeric(xpathSApply(doc, '//item/geo:lat', xmlValue)),
+    longitude = as.numeric(xpathSApply(doc, '//item/geo:long', xmlValue)),
     description = xpathSApply(doc, '//item/description', xmlValue)
     )
 
